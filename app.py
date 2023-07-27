@@ -214,7 +214,43 @@ def get_complexity_score(chunks):
     :return: The complexity score of the chunks.
     """
     if len(chunks)==1:
-      prompt = f"Please evaluate the complexity of the code in this Git repository on a scale of 1 to 10, where 1 is very simple and 10 is very complex. The following text is a Git repository with code. The structure of the text are sections that begin with -----, followed by a single line containing the file path and file name, followed by a variable amount of lines containing the file contents. The text representing the Git repository ends when the symbols --END-- are encounted.\n.{chunks[0]}"
+      
+      prompt = f""""
+        Please evaluate the technical complexity of this code on a scale of 1 to 10, where 1 is very simple and 10 is very complex. When making your evaluation, follow these steps:
+
+        Analyze the code to identify its key components and features, such as data structures, algorithms, control structures, and programming concepts.
+
+        Assess the complexity of each component and feature individually, taking into account factors such as algorithmic complexity, computational efficiency, and use of advanced programming techniques.
+
+        Combine your assessments of the individual components and features to form an overall evaluation of the technical complexity of the code.
+
+        Provide a detailed explanation for your evaluation, including specific examples from the code that support your assessment and a clear justification for your complexity score.
+
+        Consider factors such as use of  code organization, readability and maintainability, use of design patterns, computational efficiency, scalability, use of advanced programming languages and frameworks, optimization, use of cutting-edge technologies, and software architecture.
+
+        To help you make your evaluation, here are some examples of code with different levels of complexity:
+
+        Example 1 (Complexity: 1): This code calculates the sum of two numbers using the addition operator.
+
+        Reasoning: This code is very simple because it only performs a basic arithmetic operation using a single operator. The algorithmic complexity is low because the calculation can be performed in constant time.
+
+        Observations: The code is short and easy to understand. It does not use any advanced programming concepts or data structures.
+
+        Example 2 (Complexity: 9): This code implements a machine learning algorithm using advanced data structures and algorithms.
+
+        Reasoning: This code is highly complex because it uses advanced data structures and algorithms to implement a machine learning algorithm, which requires a deep understanding of mathematical concepts and computational techniques. The algorithmic complexity is high because the machine learning operation takes longer for larger input values.
+
+        Observations: The code is much longer and more difficult to understand than the previous examples. It uses advanced data structures and algorithms to implement the machine learning algorithm, which requires a deep understanding of these concepts.
+
+        Example 3 (Complexity: 5): This code implements a binary search algorithm using recursion.
+
+        Reasoning: This code is more complex than the previous examples because it uses an advanced algorithm (binary search) and a more advanced programming concept (recursion) to perform a search operation. The algorithmic complexity is higher because the search operation takes longer for larger input values.
+
+        Observations: The code is longer and more difficult to understand than the previous examples. It uses recursion to implement the binary search algorithm, which requires a deeper understanding of programming concepts.
+
+        Based on these examples and your own analysis of the given code, please provide a detailed evaluation of its technical complexity. Include specific examples from the code that support your assessment and explain your reasoning in detail. The structure of the text is as follows: sections begin with '-----', followed by a single line containing the file path and file name, followed by a variable number of lines containing the file contents. The text representing the Git repository ends when the symbols '--END--' are encountered and the following is the code: \n.{chunk}
+        """"
+
       response = openai.Completion.create(
           engine="text-davinci-003",
           prompt=prompt,
@@ -245,7 +281,41 @@ def get_complexity_score(chunks):
       
       for num,chunk in enumerate(chunks):
 
-        prompt = f"Please evaluate the complexity of the code in this Git repository on a scale of 1 to 10, where 1 is very simple and 10 is very complex and just give straight forward number don't add anything like score/10, etc . The text provided below is {num+1} chunk from a full Git repository containing code. The structure of the text is as follows: sections begin with '-----', followed by a single line containing the file path and file name, followed by a variable number of lines containing the file contents. The text representing the Git repository ends when the symbols '--END--' are encountered. Please keep in mind that this is only a chunk of the full repository while evaluating its complexity.\n.{chunk}"
+        prompt = f""""
+        Please evaluate the technical complexity of this code on a scale of 1 to 10, where 1 is very simple and 10 is very complex. When making your evaluation, follow these steps:
+
+        Analyze the code to identify its key components and features, such as data structures, algorithms, control structures, and programming concepts.
+
+        Assess the complexity of each component and feature individually, taking into account factors such as algorithmic complexity, computational efficiency, and use of advanced programming techniques.
+
+        Combine your assessments of the individual components and features to form an overall evaluation of the technical complexity of the code.
+
+        Provide a detailed explanation for your evaluation, including specific examples from the code that support your assessment and a clear justification for your complexity score.
+
+        Consider factors such as use of  code organization, readability and maintainability, use of design patterns, computational efficiency, scalability, use of advanced programming languages and frameworks, optimization, use of cutting-edge technologies, and software architecture.
+
+        To help you make your evaluation, here are some examples of code with different levels of complexity:
+
+        Example 1 (Complexity: 1): This code calculates the sum of two numbers using the addition operator.
+
+        Reasoning: This code is very simple because it only performs a basic arithmetic operation using a single operator. The algorithmic complexity is low because the calculation can be performed in constant time.
+
+        Observations: The code is short and easy to understand. It does not use any advanced programming concepts or data structures.
+
+        Example 2 (Complexity: 9): This code implements a machine learning algorithm using advanced data structures and algorithms.
+
+        Reasoning: This code is highly complex because it uses advanced data structures and algorithms to implement a machine learning algorithm, which requires a deep understanding of mathematical concepts and computational techniques. The algorithmic complexity is high because the machine learning operation takes longer for larger input values.
+
+        Observations: The code is much longer and more difficult to understand than the previous examples. It uses advanced data structures and algorithms to implement the machine learning algorithm, which requires a deep understanding of these concepts.
+
+        Example 3 (Complexity: 5): This code implements a binary search algorithm using recursion.
+
+        Reasoning: This code is more complex than the previous examples because it uses an advanced algorithm (binary search) and a more advanced programming concept (recursion) to perform a search operation. The algorithmic complexity is higher because the search operation takes longer for larger input values.
+
+        Observations: The code is longer and more difficult to understand than the previous examples. It uses recursion to implement the binary search algorithm, which requires a deeper understanding of programming concepts.
+
+        Based on these examples and your own analysis of the given code, please provide a detailed evaluation of its technical complexity. Include specific examples from the code that support your assessment and explain your reasoning in detail.. The text provided below is {num+1} chunk from a full Git repository containing code. The structure of the text is as follows: sections begin with '-----', followed by a single line containing the file path and file name, followed by a variable number of lines containing the file contents. The text representing the Git repository ends when the symbols '--END--' are encountered. Please keep in mind that this is only a chunk of the full repository while evaluating its complexity and the following is the code:\n.{chunk}
+        """"
         response = openai.Completion.create(
             engine="text-davinci-003",
             prompt=prompt,
