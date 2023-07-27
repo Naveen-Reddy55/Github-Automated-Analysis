@@ -320,7 +320,7 @@ def get_complexity_score(chunks):
 
         Reasoning: This code is very simple because it only performs a basic arithmetic operation using a single operator. The algorithmic complexity is low because the calculation can be performed in constant time.
 
-        Observations: The code is short and easy to understand. It does not use any advanced programming concepts or data structures.
+        Observations: The code is short and easy to understand. It does not use any advanced programming concepts or data structures .
 
         code example: ```
             def add(a: int, b: int) -> int:
