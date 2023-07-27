@@ -215,7 +215,7 @@ def get_complexity_score(chunks):
     """
     if len(chunks)==1:
       
-      prompt = f""""
+      prompt = f"""
         Please evaluate the technical complexity of this code on a scale of 1 to 10, where 1 is very simple and 10 is very complex. When making your evaluation, follow these steps:
 
         Analyze the code to identify its key components and features, such as data structures, algorithms, control structures, and programming concepts.
@@ -249,7 +249,8 @@ def get_complexity_score(chunks):
         Observations: The code is longer and more difficult to understand than the previous examples. It uses recursion to implement the binary search algorithm, which requires a deeper understanding of programming concepts.
 
         Based on these examples and your own analysis of the given code, please provide a detailed evaluation of its technical complexity. Include specific examples from the code that support your assessment and explain your reasoning in detail. The structure of the text is as follows: sections begin with '-----', followed by a single line containing the file path and file name, followed by a variable number of lines containing the file contents. The text representing the Git repository ends when the symbols '--END--' are encountered and the following is the code: \n.{chunk}
-        """"
+        
+        """
 
       response = openai.Completion.create(
           engine="text-davinci-003",
@@ -281,7 +282,7 @@ def get_complexity_score(chunks):
       
       for num,chunk in enumerate(chunks):
 
-        prompt = f""""
+        prompt = f"""
         Please evaluate the technical complexity of this code on a scale of 1 to 10, where 1 is very simple and 10 is very complex. When making your evaluation, follow these steps:
 
         Analyze the code to identify its key components and features, such as data structures, algorithms, control structures, and programming concepts.
@@ -315,7 +316,7 @@ def get_complexity_score(chunks):
         Observations: The code is longer and more difficult to understand than the previous examples. It uses recursion to implement the binary search algorithm, which requires a deeper understanding of programming concepts.
 
         Based on these examples and your own analysis of the given code, please provide a detailed evaluation of its technical complexity. Include specific examples from the code that support your assessment and explain your reasoning in detail.. The text provided below is {num+1} chunk from a full Git repository containing code. The structure of the text is as follows: sections begin with '-----', followed by a single line containing the file path and file name, followed by a variable number of lines containing the file contents. The text representing the Git repository ends when the symbols '--END--' are encountered. Please keep in mind that this is only a chunk of the full repository while evaluating its complexity and the following is the code:\n.{chunk}
-        """"
+        """
         response = openai.Completion.create(
             engine="text-davinci-003",
             prompt=prompt,
