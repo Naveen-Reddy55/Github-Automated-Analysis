@@ -1,4 +1,4 @@
-# GitHub Repository Complexity Analyzer
+# GitHub Automated Analysis
 
 ## Overview
 
