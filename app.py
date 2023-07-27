@@ -244,9 +244,9 @@ def get_complexity_score(chunks):
 
         Example 3 (Complexity: 5): This code implements a binary search algorithm using recursion.
 
-        Reasoning: This code is more complex than the previous examples because it uses an advanced algorithm (binary search) and a more advanced programming concept (recursion) to perform a search operation. The algorithmic complexity is higher because the search operation takes longer for larger input values.
+        Reasoning: This code is less complex than the previous examples because it uses an advanced algorithm (binary search) and a more advanced programming concept (recursion) to perform a search operation. The algorithmic complexity is higher because the search operation takes longer for larger input values.
 
-        Observations: The code is longer and more difficult to understand than the previous examples. It uses recursion to implement the binary search algorithm, which requires a deeper understanding of programming concepts.
+        Observations: The code is longer and more difficult to understand but not compared to the previous examples. It uses recursion to implement the binary search algorithm, which requires a deeper understanding of programming concepts.
 
         Based on these examples and your own analysis of the given code, please provide a detailed evaluation of its technical complexity. Include specific examples from the code that support your assessment and explain your reasoning in detail. The structure of the text is as follows: sections begin with '-----', followed by a single line containing the file path and file name, followed by a variable number of lines containing the file contents. The text representing the Git repository ends when the symbols '--END--' are encountered and the following is the code: \n.{chunk}
         
@@ -311,9 +311,9 @@ def get_complexity_score(chunks):
 
         Example 3 (Complexity: 5): This code implements a binary search algorithm using recursion.
 
-        Reasoning: This code is more complex than the previous examples because it uses an advanced algorithm (binary search) and a more advanced programming concept (recursion) to perform a search operation. The algorithmic complexity is higher because the search operation takes longer for larger input values.
+        Reasoning: This code is less complex than the previous examples because it uses an advanced algorithm (binary search) and a advanced programming concept (recursion) to perform a search operation. The algorithmic complexity is higher because the search operation takes longer for larger input values.
 
-        Observations: The code is longer and more difficult to understand than the previous examples. It uses recursion to implement the binary search algorithm, which requires a deeper understanding of programming concepts.
+        Observations: The code is longer and but not that difficult to understand than the previous examples. It uses recursion to implement the binary search algorithm, which requires a deeper understanding of programming concepts.
 
         Based on these examples and your own analysis of the given code, please provide a detailed evaluation of its technical complexity. Include specific examples from the code that support your assessment and explain your reasoning in detail.. The text provided below is {num+1} chunk from a full Git repository containing code. The structure of the text is as follows: sections begin with '-----', followed by a single line containing the file path and file name, followed by a variable number of lines containing the file contents. The text representing the Git repository ends when the symbols '--END--' are encountered. Please keep in mind that this is only a chunk of the full repository while evaluating its complexity and the following is the code:\n.{chunk}
         """
