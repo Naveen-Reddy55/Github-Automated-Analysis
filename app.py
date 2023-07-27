@@ -218,15 +218,15 @@ def get_complexity_score(chunks):
       prompt = f"""
         Please evaluate the technical complexity of this code on a scale of 1 to 10, where 1 is very simple and 10 is very complex. When making your evaluation, follow these steps:
 
-        Analyze the code to identify its key components and features, such as data structures, algorithms, control structures, and programming concepts.
+        1. Analyze the code to identify its key components and features, such as data structures, algorithms, control structures, and programming concepts.
 
-        Assess the complexity of each component and feature individually, taking into account factors such as algorithmic complexity, computational efficiency, and use of advanced programming techniques.
+        2. Assess the complexity of each component and feature individually, taking into account factors such as algorithmic complexity, computational efficiency, and use of advanced programming techniques.
 
-        Combine your assessments of the individual components and features to form an overall evaluation of the technical complexity of the code.
+        3. Combine your assessments of the individual components and features to form an overall evaluation of the technical complexity of the code.
 
-        Provide a detailed explanation for your evaluation, including specific examples from the code that support your assessment and a clear justification for your complexity score.
+        4. Provide a detailed explanation for your evaluation, including specific examples from the code that support your assessment and a clear justification for your complexity score.
 
-        Consider factors such as use of  code organization, readability and maintainability, use of design patterns, computational efficiency, scalability, use of advanced programming languages and frameworks, optimization, use of cutting-edge technologies, and software architecture.
+        5. Consider factors such as use of code organization, readability and maintainability, use of design patterns, computational efficiency, scalability, use of advanced programming languages and frameworks, optimization, use of cutting-edge technologies, and software architecture.
 
         To help you make your evaluation, here are some examples of code with different levels of complexity:
 
@@ -236,7 +236,12 @@ def get_complexity_score(chunks):
 
         Observations: The code is short and easy to understand. It does not use any advanced programming concepts or data structures.
 
-        Example 2 (Complexity: 9): This code implements a machine learning algorithm using advanced data structures and algorithms.
+        code example: ```
+            def add(a: int, b: int) -> int:
+                return a + b
+                       ```
+
+        Example 2 (Complexity: 9): This code implements a machine learning algorithm using advanced data structures and algorithms from scratch.
 
         Reasoning: This code is highly complex because it uses advanced data structures and algorithms to implement a machine learning algorithm, which requires a deep understanding of mathematical concepts and computational techniques. The algorithmic complexity is high because the machine learning operation takes longer for larger input values.
 
@@ -244,9 +249,23 @@ def get_complexity_score(chunks):
 
         Example 3 (Complexity: 5): This code implements a binary search algorithm using recursion.
 
-        Reasoning: This code is less complex than the previous examples because it uses an advanced algorithm (binary search) and a more advanced programming concept (recursion) to perform a search operation. The algorithmic complexity is higher because the search operation takes longer for larger input values.
+        Reasoning: This code is less complex than the previous examples because it uses an advanced algorithm (binary search) and a advanced programming concept (recursion) to perform a search operation. The algorithmic complexity is higher because the search operation takes longer for larger input values.
 
-        Observations: The code is longer and more difficult to understand but not compared to the previous examples. It uses recursion to implement the binary search algorithm, which requires a deeper understanding of programming concepts.
+        Observations: The code is longer and but not that difficult to understand than the previous examples. It uses recursion to implement the binary search algorithm, which requires a deeper understanding of programming concepts.
+        
+        code example: ```
+
+        def binary_search(arr: list[int], low: int, high: int, x: int) -> int:
+            if high >= low:
+                mid = (high + low) // 2
+                if arr[mid] == x:
+                    return mid
+                elif arr[mid] > x:
+                    return binary_search(arr, low, mid - 1, x)
+                else:
+                    return binary_search(arr, mid + 1, high, x)
+            else:
+                return -1
 
         Based on these examples and your own analysis of the given code, please provide a detailed evaluation of its technical complexity. Include specific examples from the code that support your assessment and explain your reasoning in detail. The structure of the text is as follows: sections begin with '-----', followed by a single line containing the file path and file name, followed by a variable number of lines containing the file contents. The text representing the Git repository ends when the symbols '--END--' are encountered and the following is the code: \n.{chunk}
         
@@ -283,17 +302,17 @@ def get_complexity_score(chunks):
       for num,chunk in enumerate(chunks):
 
         prompt = f"""
-        Please evaluate the technical complexity of this code on a scale of 1 to 10, where 1 is very simple and 10 is very complex. When making your evaluation, follow these steps:
+        Please evaluate the technical complexity of this code on a scale of 1 to 10, where 1 is very simple and 10 is very complex and Please keep in mind that this is only a chunk of the full repository while evaluating its complexity. When making your evaluation, follow these steps:
 
-        Analyze the code to identify its key components and features, such as data structures, algorithms, control structures, and programming concepts.
+        1. Analyze the code to identify its key components and features, such as data structures, algorithms, control structures, and programming concepts.
 
-        Assess the complexity of each component and feature individually, taking into account factors such as algorithmic complexity, computational efficiency, and use of advanced programming techniques.
+        2. Assess the complexity of each component and feature individually, taking into account factors such as algorithmic complexity, computational efficiency, and use of advanced programming techniques.
 
-        Combine your assessments of the individual components and features to form an overall evaluation of the technical complexity of the code.
+        3. Combine your assessments of the individual components and features to form an overall evaluation of the technical complexity of the code.
 
-        Provide a detailed explanation for your evaluation, including specific examples from the code that support your assessment and a clear justification for your complexity score.
+        4. Provide a detailed explanation for your evaluation, including specific examples from the code that support your assessment and a clear justification for your complexity score.
 
-        Consider factors such as use of  code organization, readability and maintainability, use of design patterns, computational efficiency, scalability, use of advanced programming languages and frameworks, optimization, use of cutting-edge technologies, and software architecture.
+        5. Consider factors such as use of code organization, readability and maintainability, use of design patterns, computational efficiency, scalability, use of advanced programming languages and frameworks, optimization, use of cutting-edge technologies, and software architecture.
 
         To help you make your evaluation, here are some examples of code with different levels of complexity:
 
@@ -303,7 +322,12 @@ def get_complexity_score(chunks):
 
         Observations: The code is short and easy to understand. It does not use any advanced programming concepts or data structures.
 
-        Example 2 (Complexity: 9): This code implements a machine learning algorithm using advanced data structures and algorithms.
+        code example: ```
+            def add(a: int, b: int) -> int:
+                return a + b
+                       ```
+
+        Example 2 (Complexity: 9): This code implements a machine learning algorithm using advanced data structures and algorithms from scratch.
 
         Reasoning: This code is highly complex because it uses advanced data structures and algorithms to implement a machine learning algorithm, which requires a deep understanding of mathematical concepts and computational techniques. The algorithmic complexity is high because the machine learning operation takes longer for larger input values.
 
@@ -314,7 +338,21 @@ def get_complexity_score(chunks):
         Reasoning: This code is less complex than the previous examples because it uses an advanced algorithm (binary search) and a advanced programming concept (recursion) to perform a search operation. The algorithmic complexity is higher because the search operation takes longer for larger input values.
 
         Observations: The code is longer and but not that difficult to understand than the previous examples. It uses recursion to implement the binary search algorithm, which requires a deeper understanding of programming concepts.
+        code example: ```
 
+        def binary_search(arr: list[int], low: int, high: int, x: int) -> int:
+            if high >= low:
+                mid = (high + low) // 2
+                if arr[mid] == x:
+                    return mid
+                elif arr[mid] > x:
+                    return binary_search(arr, low, mid - 1, x)
+                else:
+                    return binary_search(arr, mid + 1, high, x)
+            else:
+                return -1
+                 ```
+        
         Based on these examples and your own analysis of the given code, please provide a detailed evaluation of its technical complexity. Include specific examples from the code that support your assessment and explain your reasoning in detail.. The text provided below is {num+1} chunk from a full Git repository containing code. The structure of the text is as follows: sections begin with '-----', followed by a single line containing the file path and file name, followed by a variable number of lines containing the file contents. The text representing the Git repository ends when the symbols '--END--' are encountered. Please keep in mind that this is only a chunk of the full repository while evaluating its complexity and the following is the code:\n.{chunk}
         """
         response = openai.Completion.create(
